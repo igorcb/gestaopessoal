@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Listagem Terceiro Centro de Custo</div>
+  <div class="panel-body">
+    <%= link_to 'Novo Terceiro Centro de Custo', new_sub_cost_center_three_path, class: "btn btn-primary btn-lg btn-block" %>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Cost center</th>
+            <th>Sub cost center</th>
+            <th>Nome</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @sub_cost_center_threes.each do |sub_cost_center_three| %>
+          <tr>
+            <td><%= sub_cost_center_three.cost_center.nome %></td>
+            <td><%= sub_cost_center_three.sub_cost_center.nome %></td>
+            <td><%= sub_cost_center_three.nome %></td>
+            <td><%= link_to 'Show', sub_cost_center_three, class: "btn btn-info btn-xs" %></td>
+            <td><%= link_to 'Edit', edit_sub_cost_center_three_path(sub_cost_center_three), class: "btn btn-primary btn-xs" %></td> 
+            <td><%= link_to 'Destroy', sub_cost_center_three, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>    
+  </div>
+</div>

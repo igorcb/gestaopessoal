@@ -1,0 +1,21 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Dados do Sub Centro de Custo</div>
+  <div class="panel-body">
+		<p>
+		  <strong>Cost center:</strong>
+		  <%= @sub_cost_center.cost_center.nome %>
+		</p>
+
+		<p>
+		  <strong>Nome:</strong>
+		  <%= @sub_cost_center.nome %>
+		</p>
+  </div>
+
+</div>
+
+<div class="form-group">
+  <%= link_to 'Editar', edit_sub_cost_center_path(@sub_cost_center), class: "btn btn-primary"  %> 
+  <%= link_to 'Voltar', sub_cost_centers_path, class: "btn btn-default" %>
+  <%= link_to 'Novo ', new_sub_cost_center_path, class: "btn btn-success" %>
+</div>

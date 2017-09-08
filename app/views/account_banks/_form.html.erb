@@ -1,0 +1,35 @@
+<%= form_for(@account_bank) do |f| %>
+  <% if @account_bank.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@account_bank.errors.count, "error") %> prohibited this account_bank from being saved:</h2>
+
+      <ul>
+      <% @account_bank.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :agencia %><br>
+    <%= f.text_field :agencia, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :conta %><br>
+    <%= f.text_field :conta, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :tipo %><br>
+    <%= f.text_field :tipo, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Salvar", class: "btn btn-primary" %>
+    <%= link_to "Listar Todos", account_banks_path, class: "btn btn-default" %>
+  </div>
+
+<% end %>

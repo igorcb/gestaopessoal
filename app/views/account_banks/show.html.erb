@@ -1,0 +1,33 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Dados da Conta Bacaria</div>
+  <div class="panel-body">
+		<p>
+		  <strong>Nome:</strong>
+		  <%= @account_bank.nome %>
+		</p>
+
+		<p>
+		  <strong>Agencia:</strong>
+		  <%= @account_bank.agencia %>
+		</p>
+
+		<p>
+		  <strong>Conta:</strong>
+		  <%= @account_bank.conta %>
+		</p>
+
+		<p>
+		  <strong>Tipo:</strong>
+		  <%= @account_bank.tipo %>
+		</p>
+
+  </div>
+
+</div>
+
+<div class="form-group">
+  <%= link_to 'Editar', edit_account_bank_path(@account_bank), class: "btn btn-primary"  %> 
+  <%= link_to 'Voltar', account_banks_path, class: "btn btn-default" %>
+  <%= link_to 'Novo ', new_account_bank_path, class: "btn btn-success" %>
+</div>
+

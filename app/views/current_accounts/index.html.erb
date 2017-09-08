@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<div class="panel panel-default">
+  <div class="panel-heading">Listagem Conta Corrente</div>
+  <div class="panel-body">
+    <%= link_to 'Novo Conta Corrente', new_current_account_path, class: "btn btn-primary btn-lg btn-block" %>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <th>Conta</th>
+          <th>Data</th>
+          <th>Cred/Debit</th>
+          <th>Valor </th>
+          <th>Historico</th>
+          <th colspan="2"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @current_accounts.each do |current_account| %>
+          <tr>
+            <td><%= current_account.account_bank.nome %></td>
+            <td><%= date_br(current_account.date_launche) %></td>
+            <td><%= current_account.name_type_launche %></td>
+            <td><%= number_to_currency(current_account.price, unit: "R$ ", separator: ",", delimiter: ".") %></td>
+            <td><%= truncate(current_account.historic, lenght: 20) %></td>
+            <td><%= link_to 'Exibir', current_account, class: "btn btn-info btn-xs" %></td>
+            <td><%= link_to 'Editar', edit_current_account_path(current_account), class: "btn btn-primary btn-xs" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>    
+  </div>
+</div>

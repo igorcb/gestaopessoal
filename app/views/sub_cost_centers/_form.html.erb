@@ -1,0 +1,27 @@
+<%= form_for(@sub_cost_center) do |f| %>
+  <% if @sub_cost_center.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sub_cost_center.errors.count, "error") %> prohibited this sub_cost_center from being saved:</h2>
+
+      <ul>
+      <% @sub_cost_center.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :cost_center_id, "Centro de Custo" %>
+    <%= f.select(:cost_center_id, CostCenter.order(:nome).collect {|c| [c.nome, c.id]}, {include_blank: true}, {class: "form-control"} ) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Salvar", class: "btn btn-primary" %>
+    <%= link_to "Listar Todos", sub_cost_centers_path, class: "btn btn-default" %>
+  </div>
+<% end %>

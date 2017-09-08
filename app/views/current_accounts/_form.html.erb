@@ -1,0 +1,107 @@
+<%= form_for(@current_account) do |f| %>
+  <% if @current_account.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@current_account.errors.count, "error") %> prohibited this current_account from being saved:</h2>
+
+      <ul>
+      <% @current_account.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :account_bank_id, "Conta Bancaria" %><br>
+    <%= f.select(:account_bank_id, AccountBank.order(:nome).collect {|c| [c.nome, c.id]}, {include_blank: true}, {class: "form-control"} ) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :cost_center_id, "Centro de Custo" %>
+    <%= f.select(:cost_center_id, CostCenter.order(:nome).collect {|c| [c.nome, c.id]}, {include_blank: true}, {class: "form-control"} ) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :sub_cost_center_id, "Sub Centro de Custo" %><br>
+    <%= f.select(:sub_cost_center_id, SubCostCenter.order(:nome).collect {|c| [c.nome, c.id]}, {include_blank: true}, {class: "form-control"} ) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :sub_cost_center_three_id, "Terceiro Sub Centro de Custo" %><br>
+    <%= f.select(:sub_cost_center_three_id, SubCostCenterThree.order(:nome).collect {|c| [c.nome, c.id]}, {include_blank: true}, {class: "form-control"} ) %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :date_launche, "Data" %><br>
+    <% if @current_account.new_record? %> 
+      <%= f.text_field :date_launche, value: date_br(DateTime.current), class: "form-control datepicker" %>
+    <% else %>
+      <%= f.text_field :date_launche, value: date_br(@current_account.date_launche), class: "form-control datepicker" %>
+    <% end %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :type_launche, "Tipo" %><br>
+    <%= f.select( :type_launche, select_credito_debito, {include_blank: false}, {class: "form-control"} )%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :price, "Valor" %><br>
+    <%= f.text_field :price, {autofocus: true, class: "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :historic, "Historico" %><br>
+    <%= f.text_field :historic, {class: "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.submit "Salvar", class: "btn btn-primary btn-sm btn-block" %>
+    <%= link_to "Exibir",  current_account_path(@current_account), class: "btn btn-info btn-sm btn-block" if !@current_account.new_record? %>
+    <%= link_to "Listar Todos", current_accounts_path, class: "btn btn-default btn-sm btn-block" %>
+  </div>
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker({
+      language: 'pt-BR'
+    });
+  });
+</script>
+
+
+<script type="text/javascript">
+  $(function(){
+    $("#current_account_cost_center_id").change(function(){
+      var cost_center = "cost_center_id="+$(this).val();
+      console.log(cost_center);
+      $.getJSON('/sub_cost_centers_by_cost', cost_center, function(data){
+        var options = '<option value="">SELECIONE SUB CENTRO CUSTO</option>'; 
+        $.each(data, function(i, item) {
+          options += '<option value="' + item.id + '">' + item.n + '</option>';
+        });
+        $("#current_account_sub_cost_center_id").html(options);
+      });
+    });
+  });
+</script>
+
+<script type="text/javascript">
+  $(function(){
+    $("#current_account_sub_cost_center_id").change(function(){
+      var cost_center = $("#current_account_cost_center_id").val();
+      var sub_cost_center = $(this).val();
+      var cost_and_sub_cost = {'cost_center_id': cost_center, 'sub_cost_center_id': sub_cost_center}
+      //var myLoc = { 'lat': 35, 'lon': -110 };
+      console.log(cost_and_sub_cost);
+      $.getJSON('/sub_cost_centers_three_by_sub_cost_center', cost_and_sub_cost, function(data){
+        var options = '<option value="">SELECIONE SUB CENTRO CUSTO NIVEL 3</option>'; 
+        $.each(data, function(i, item) {
+          options += '<option value="' + item.id + '">' + item.n + '</option>';
+        });
+        $("#current_account_sub_cost_center_three_id").html(options);
+      });
+    });
+  });
+</script>

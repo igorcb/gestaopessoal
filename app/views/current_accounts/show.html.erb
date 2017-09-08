@@ -1,0 +1,54 @@
+
+<div class="panel panel-default">
+  <div class="panel-heading">Dados do Conta Corrente</div>
+  <div class="panel-body">
+    
+    <p>
+      <strong>Conta Bancaria:</strong>
+      <%= @current_account.account_bank.nome %>
+    </p>
+
+    <p>
+      <strong>Centro de Custo:</strong>
+      <%= @current_account.cost_center.nome %>
+    </p>
+
+    <p>
+      <strong>Sub Centro de Custo:</strong>
+      <%= @current_account.sub_cost_center.nome %>
+    </p>
+
+    <p>
+      <strong>Terceiro Centro de Custo:</strong>
+      <%= @current_account.sub_cost_center_three.nome %>
+    </p>
+
+    <p>
+      <strong>Data:</strong>
+      <%= date_br @current_account.date_launche %>
+    </p>
+
+    <p>
+      <strong>Tipo:</strong>
+      <%= @current_account.name_type_launche %>
+    </p>
+
+    <p>
+      <strong>Valor:</strong>
+      <%= number_to_currency(@current_account.price, unit: "R$ ", separator: ",", delimiter: ".") %>
+    </p>
+
+    <p>
+      <strong>Historico:</strong>
+      <%= @current_account.historic %>
+    </p>
+
+  </div>
+
+</div>
+
+<div class="form-group">
+  <%= link_to 'Editar', edit_current_account_path(@current_account), class: "btn btn-primary"  %> 
+  <%= link_to 'Voltar', current_accounts_path, class: "btn btn-default" %>
+  <%= link_to 'Novo ', new_current_account_path, class: "btn btn-success" %>
+</div>

@@ -12,6 +12,11 @@
   <% end %>
 
   <div class="form-group">
+    <%= f.label :person_id, "Pessoa" %><br>
+    <%= f.select(:person_id, Person.order(:nome).collect {|c| [c.nome, c.id]}, {include_blank: true}, {class: "form-control"} ) %>
+  </div>
+
+  <div class="form-group">
     <%= f.label :account_bank_id, "Conta Bancaria" %><br>
     <%= f.select(:account_bank_id, AccountBank.order(:nome).collect {|c| [c.nome, c.id]}, {include_blank: true}, {class: "form-control"} ) %>
   </div>

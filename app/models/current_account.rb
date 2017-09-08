@@ -1,4 +1,5 @@
 class CurrentAccount < ActiveRecord::Base
+  belongs_to :person
   belongs_to :account_bank
   belongs_to :cost_center
   belongs_to :sub_cost_center

@@ -70,6 +70,6 @@ class CurrentAccountsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def current_account_params
-      params.require(:current_account).permit(:account_bank_id, :cost_center_id, :sub_cost_center_id, :sub_cost_center_three_id, :nome, :date_launche, :type_launche, :price, :historic)
+      params.require(:current_account).permit(:person_id, :account_bank_id, :cost_center_id, :sub_cost_center_id, :sub_cost_center_three_id, :nome, :date_launche, :type_launche, :price, :historic)
     end
 end

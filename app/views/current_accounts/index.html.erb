@@ -7,6 +7,7 @@
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
+          <th>Pessoa</th>
           <th>Conta</th>
           <th>Data</th>
           <th>Cred/Debit</th>
@@ -19,6 +20,7 @@
       <tbody>
         <% @current_accounts.each do |current_account| %>
           <tr>
+            <td><%= current_account.person.nome %></td>
             <td><%= current_account.account_bank.nome %></td>
             <td><%= date_br(current_account.date_launche) %></td>
             <td><%= current_account.name_type_launche %></td>

@@ -8,7 +8,7 @@ class CreateCurrentAccounts < ActiveRecord::Migration
       t.string :nome
       t.date :date_launche
       t.integer :type_launche
-      t.decimal :price
+      t.decimal :price, :decimal, precision: 5, scale: 2
       t.text :historic
 
       t.timestamps null: false

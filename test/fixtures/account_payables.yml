@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  person_id: 
+  cost_center_id: 
+  sub_cost_center_id: 
+  sub_cost_center_threes_id: 
+  data_vencimento: 2017-09-08
+  documento: MyString
+  valor: 9.99
+  obs: MyText
+  status: 1
+
+two:
+  person_id: 
+  cost_center_id: 
+  sub_cost_center_id: 
+  sub_cost_center_threes_id: 
+  data_vencimento: 2017-09-08
+  documento: MyString
+  valor: 9.99
+  obs: MyText
+  status: 1

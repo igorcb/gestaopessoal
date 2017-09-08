@@ -1,5 +1,6 @@
 class SubCostCenterThreesController < ApplicationController
   before_action :set_sub_cost_center_three, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /sub_cost_center_threes
   # GET /sub_cost_center_threes.json

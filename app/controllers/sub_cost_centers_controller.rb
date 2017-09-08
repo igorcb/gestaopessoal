@@ -1,5 +1,6 @@
 class SubCostCentersController < ApplicationController
   before_action :set_sub_cost_center, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def sub_cost_centers_three_by_sub_cost_center
     cost_center_id = params[:cost_center_id].to_i

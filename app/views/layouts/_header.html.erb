@@ -1,0 +1,32 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a href="/dashboard" class="navbar-brand"><%= full_title(yield(:title)) %></a>
+    </div>
+    <% if signed_in? %>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Movimentações", current_accounts_path %></li>
+        <li><%= link_to "Contas Bacarias", account_banks_path %></li>
+        <li><%= link_to "Centro de Custo", cost_centers_path %></li>
+        <li><%= link_to "Sub Centro de Custo", sub_cost_centers_path %></li>
+        <li><%= link_to "Terceiro Centro de Custo", sub_cost_center_threes_path %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+<!--         <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
+        <li><%= link_to destroy_user_session_path, method: "delete" do %>
+            <i class="glyphicon glyphicon-log-out"></i> Sair
+        <% end %>
+        </li>
+      </ul>
+    <% end %>
+
+  </div>
+</nav>

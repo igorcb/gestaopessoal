@@ -1,5 +1,6 @@
 class AccountBanksController < ApplicationController
   before_action :set_account_bank, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /account_banks
   # GET /account_banks.json

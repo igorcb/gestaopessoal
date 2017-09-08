@@ -8,5 +8,9 @@ Rails.application.routes.draw do
   resources :sub_cost_centers
   resources :cost_centers
   resources :account_banks
+
   devise_for :users
-end
+
+  root to: 'current_accounts#index'
+end  
+

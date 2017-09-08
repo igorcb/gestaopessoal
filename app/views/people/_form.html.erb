@@ -1,0 +1,92 @@
+<%= form_for(@person) do |f| %>
+  <% if @person.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% @person.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="form-group">
+    <%= f.label :tipo_pessoa %> <br />
+    <div class="radio-inline">
+      <%= f.radio_button :tipo_pessoa, "0"%>CPF
+    </div>
+
+    <div class="radio-inline">
+      <%= f.radio_button :tipo_pessoa, "1"%>CNPJ
+    </div>
+  </div>  
+
+  <div class="form-group">
+    <%= f.label :cpf_cnpj %><br>
+    <%= f.text_field :cpf_cnpj, class: "form-control" %>
+  </div>
+
+  <div id="client_cpf_cpnj" class="form-group">
+
+  </div>
+    
+  <div class="form-group">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :endereco %><br>
+    <%= f.text_field :endereco, class: "form-control" %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Salvar", class: "btn btn-primary" %>
+    <%= link_to "Listar Todos", people_path, class: "btn btn-default" %>
+  </div>
+<% end %>
+
+
+<script type="text/javascript">
+  <% if @person.new_record? %>
+    $(document).ready(function() {
+      $('input[name="person[tipo_pessoa]"]').change(function() {
+        var tipo = $(this).val();
+        var cpf_ou_cnpj = '<%= @person.cpf_cnpj %>'
+        $('#person_cpf_cpnj').empty(); 
+        if (tipo === '0') {
+          $('#person_cpf_cpnj').append("<div class='form-group'> <label for='person_cpf_cnpj'>CPF</label> <input class='form-control cpf' id='person_cpf_cnpj' name='person[cpf_cnpj]' type='text'> </div>");
+        } else {
+          $('#person_cpf_cpnj').append("<div class='form-group'> <label for='person_cpf_cnpj'>CNPJ</label> <input class='form-control cnpj' id='person_cpf_cnpj' name='person[cpf_cnpj]' type='text'> </div>");
+        }
+       document.getElementById("person_cpf_cnpj").setAttribute('value', cpf_ou_cnpj);
+
+      });
+    });
+  <% else %>
+    var tipo = '<%= @person.tipo_pessoa %>'
+    var cpf_ou_cnpj = '<%= @person.cpf_cnpj %>'
+    console.log(tipo);
+   if (tipo === '0') {
+      $('#person_cpf_cpnj').append("<div class='form-group'> <label for='person_cpf_cnpj'>CPF</label> <input class='form-control cpf' id='person_cpf_cnpj' name='person[cpf_cnpj]' type='text'> </div>");
+    } else {
+      $('#person_cpf_cpnj').append("<div class='form-group'> <label for='person_cpf_cnpj'>CNPJ</label> <input class='form-control cnpj' id='person_cpf_cnpj' name='person[cpf_cnpj]' type='text'> </div>");
+    }
+    document.getElementById("person_cpf_cnpj").setAttribute('value', cpf_ou_cnpj);
+
+    $(document).ready(function() {
+      $('input[name="person[tipo_pessoa]"]').change(function() {
+        var tipo = $(this).val();
+        var cpf_ou_cnpj = '<%= @person.cpf_cnpj %>'
+        console.log(cpf_ou_cnpj);
+        $('#person_cpf_cpnj').empty(); 
+        if (tipo === '0') {
+          $('#person_cpf_cpnj').append("<div class='form-group'> <label for='person_cpf_cnpj'>CPF</label> <input class='form-control cpf' id='person_cpf_cnpj' name='person[cpf_cnpj]' type='text'> </div>");
+        } else {
+          $('#person_cpf_cpnj').append("<div class='form-group'> <label for='person_cpf_cnpj'>CNPJ</label> <input class='form-control cnpj' id='person_cpf_cnpj' name='person[cpf_cnpj]' type='text'> </div>");
+        }
+       document.getElementById("person_cpf_cnpj").setAttribute('value', cpf_ou_cnpj);
+
+      });
+    });
+
+  <% end %>
+</script>

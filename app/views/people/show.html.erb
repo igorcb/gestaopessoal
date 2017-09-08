@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Dados do Centro de Custo</div>
+  <div class="panel-body">
+		<p>
+		  <strong>Tipo pessoa:</strong>
+		  <%= @person.name_type_person %>
+		</p>
+
+		<p>
+		  <strong>CPF/CNPJ:</strong>
+		  <%= @person.cpf_cnpj %>
+		</p>
+
+		<p>
+		  <strong>Nome:</strong>
+		  <%= @person.nome %>
+		</p>
+
+		<p>
+		  <strong>Endereco:</strong>
+		  <%= @person.endereco %>
+		</p>
+  </div>
+
+</div>
+
+<div class="form-group">
+  <%= link_to 'Editar', edit_person_path(@person), class: "btn btn-primary"  %> 
+  <%= link_to 'Voltar', people_path, class: "btn btn-default" %>
+  <%= link_to 'Novo ', new_person_path, class: "btn btn-success" %>
+</div>

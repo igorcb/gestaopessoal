@@ -7,7 +7,7 @@ class CreateAccountPayables < ActiveRecord::Migration
       t.references :sub_cost_center_three, index: true
       t.date :data_vencimento
       t.string :documento
-      t.decimal :valor, :decimal, precision: 5, scale: 2
+      t.decimal :valor, :decimal, precision: 10, scale: 2
       t.text :obs
       t.integer :status, default: 0
 

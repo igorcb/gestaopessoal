@@ -16,4 +16,5 @@
 //= require jquery_ujs
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.js
+//= require bootstrap/collapse
 //= require_tree .

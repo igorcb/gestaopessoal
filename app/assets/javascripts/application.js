@@ -17,4 +17,5 @@
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.js
 //= require bootstrap/collapse
+//= require bootstrap/dropdown
 //= require_tree .

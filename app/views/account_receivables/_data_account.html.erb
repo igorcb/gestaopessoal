@@ -1,0 +1,52 @@
+          <div class="panel panel-default">
+
+            <div class="panel-body"> 
+              <p>
+                <strong>Person:</strong>
+                <%= @account_receivable.person.nome %>
+              </p>
+
+              <p>
+                <strong>Cost center:</strong>
+                <%= @account_receivable.cost_center.nome %>
+              </p>
+
+              <p>
+                <strong>Sub cost center:</strong>
+                <%= @account_receivable.sub_cost_center.nome %>
+              </p>
+
+              <p>
+                <strong>Sub cost center threes:</strong>
+                <%= @account_receivable.sub_cost_center_three.nome %>
+              </p>
+
+              <p>
+                <strong>Data vencimento:</strong>
+                <%= date_br(@account_receivable.data_vencimento) %>
+              </p>
+
+              <p>
+                <strong>Documento:</strong>
+                <%= @account_receivable.documento %>
+              </p>
+
+              <p>
+                <strong>Valor:</strong>
+                <%= number_to_currency(@account_receivable.valor, unit: "R$ ", separator: ",", delimiter: ".") %>
+              </p>
+
+              <p>
+                <strong>Status:</strong>
+                <%= @account_receivable.status_name %>
+              </p>
+
+              <p>
+                <strong>Obs:</strong>
+                <pre>
+                  <%= @account_receivable.obs %>
+                </pre>
+              </p>
+
+            </div>
+          </div>

@@ -1,0 +1,41 @@
+<div class="panel panel-default">
+  <div class="panel-heading">Listagem de Receitas</div>
+  <div class="panel-body">
+    <%= link_to 'Novo Receita', new_account_receivable_path, class: "btn btn-primary btn-lg btn-block" %>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Person</th>
+            <th>Cost center</th>
+            <th>Sub cost center</th>
+            <th>Sub cost center threes</th>
+            <th>Data vencimento</th>
+            <th>Documento</th>
+            <th>Valor</th>
+            <th>Status</th>
+            <th colspan="3"></th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @account_receivables.each do |account_receivable| %>
+          <tr>
+            <td><%= account_receivable.person.nome %></td>
+            <td><%= account_receivable.cost_center.nome %></td>
+            <td><%= account_receivable.sub_cost_center.nome %></td>
+            <td><%= account_receivable.sub_cost_center_three.nome %></td>
+            <td><%= date_br account_receivable.data_vencimento %></td>
+            <td><%= account_receivable.documento %></td>
+            <td><%= number_to_currency(account_receivable.valor, unit: "R$ ", separator: ",", delimiter: ".") %></td>
+            <td><%= account_receivable.status_name %></td>
+            <td><%= link_to 'Show', account_receivable, class: "btn btn-info btn-xs" %></td>
+            <td><%= link_to 'Edit', edit_account_receivable_path(account_receivable), class: "btn btn-primary btn-xs" %></td> 
+            <td><%= link_to 'Destroy', account_receivable, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>    
+  </div>
+</div>

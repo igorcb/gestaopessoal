@@ -1,0 +1,2 @@
+module LowerReceivableHelper
+end

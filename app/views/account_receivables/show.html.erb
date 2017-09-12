@@ -1,0 +1,50 @@
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Receita:
+          <%= @account_receivable.id %> |
+          Status: 
+          <%= @account_receivable.status_name %>
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        <div class="panel panel-default">
+
+          <%= render "data_account" %>
+        
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingSeven">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+          Pagamentos
+        </a>
+      </h4>
+    </div>
+    <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+      <div class="panel-body">
+
+      <%= render "payments" %>
+
+      </div>
+    </div>
+  </div>
+<!-- Fim collapse  --> 
+</div>
+
+
+<div class="form-group">
+  <%= link_to 'Editar', edit_account_receivable_path(@account_receivable), class: "btn btn-primary"  %> 
+  <%= link_to 'Voltar', account_receivables_path, class: "btn btn-default" %>
+  <%= link_to 'Novo ', new_account_receivable_path, class: "btn btn-success" %>
+  <%= link_to 'Baixar', lower_account_receivable_path(@account_receivable), class: "btn btn-default" %>
+</div>

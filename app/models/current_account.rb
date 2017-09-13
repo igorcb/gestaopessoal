@@ -4,6 +4,9 @@ class CurrentAccount < ActiveRecord::Base
   belongs_to :cost_center
   belongs_to :sub_cost_center
   belongs_to :sub_cost_center_three
+  
+  #scope :ordered, -> { order(date_launche: :desc, id: :desc) }
+  default_scope { order(date_launche: :desc, id: :desc) } 
 
   module TypeLaunche
   	DESPESAS = -1

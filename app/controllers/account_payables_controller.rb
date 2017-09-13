@@ -67,6 +67,30 @@ class AccountPayablesController < ApplicationController
 
   end
 
+  def pay_all
+    if !params[:account_bank][:account_bank_id].present?
+      flash[:danger] = "Conta Corrente can't be blank."
+      redirect_to lower_all_payables_path
+      return 
+    end
+
+    AccountPayable.payament_all(params[:os][:ids], params[:valor_total], params[:account_bank][:account_bank_id])
+    flash[:success] = "Contas pagas com sucesso."
+    redirect_to lower_all_payables_path    
+  end
+
+  def lower_all_payables
+    @q = AccountPayable.where(status: AccountPayable::TypeStatus::ABERTO).search(params[:q])
+    @account_payables = @q.result
+#    @employees = Employee.order('nome')
+  end
+
+  def search
+    @q = AccountPayable.order('data_vencimento desc').search(params[:q])
+    @account_payables = @q.result
+  end
+
+
   private
     def set_account_payable
       @account_payable = AccountPayable.find(params[:id])

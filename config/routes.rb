@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  match "/lower_all_payables" => "account_payables#lower_all_payables", via: [:get]
   match "/sub_cost_centers_by_cost", :controller => "cost_centers", :action => "sub_cost_centers_by_cost", via: [:get]
   match "/sub_cost_centers_three_by_sub_cost_center", :controller => "sub_cost_centers", :action => "sub_cost_centers_three_by_sub_cost_center", via: [:get]
 
@@ -10,6 +11,11 @@ Rails.application.routes.draw do
     member do
       get 'lower'
       post 'pay'
+    end
+    collection do
+      get 'search'
+      get 'post'
+      post 'pay_all'
     end
   end
 

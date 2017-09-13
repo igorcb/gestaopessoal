@@ -11,6 +11,7 @@
           <th>Agencia</th>
           <th>Conta</th>
           <th>Tipo</th>
+          <th>Saldo</th>
           <th colspan="3"></th>
         </thead>
 
@@ -21,6 +22,7 @@
               <td><%= account_bank.agencia %></td>
               <td><%= account_bank.conta %></td>
               <td><%= account_bank.tipo %></td>
+              <td><%= number_to_currency(account_bank.saldo, unit: "R$ ", separator: ",", delimiter: ".") %></td>
               <td><%= link_to 'Show', account_bank, class: "btn btn-info btn-xs" %></td>
               <td><%= link_to 'Edit', edit_account_bank_path(account_bank), class: "btn btn-primary btn-xs" %></td>
               <td><%= link_to 'Destroy', account_bank, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>

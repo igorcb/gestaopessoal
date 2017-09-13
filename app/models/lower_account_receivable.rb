@@ -15,7 +15,7 @@ class LowerAccountReceivable < ActiveRecord::Base
                               date_launche: self.data_pagamento,  
                                      price: self.total_pago,
                               type_launche: CurrentAccount::TypeLaunche::DESPESAS,
-                                  historic: "ESTORNO DE RECEBIMENTO: " + self.account_receivable.obs,
+                                  historic: "ESTORNO DE RECEBIMENTO: " + self.account_payable.documento,
                             cost_center_id: self.account_receivable.cost_center_id,
                         sub_cost_center_id: self.account_receivable.sub_cost_center_id,
                   sub_cost_center_three_id: self.account_receivable.sub_cost_center_three_id

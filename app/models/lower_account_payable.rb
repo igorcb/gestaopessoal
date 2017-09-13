@@ -15,7 +15,7 @@ class LowerAccountPayable < ActiveRecord::Base
                               date_launche: self.data_pagamento,  
                                      price: self.total_pago,
                               type_launche: CurrentAccount::TypeLaunche::RECEITAS,
-                                  historic: "ESTORNO CONTA A PAGAR: " + self.account_payable.documento,
+                                  historic: "ESTORNO PAGAMENTO: " + self.account_payable.documento,
                             cost_center_id: self.account_payable.cost_center_id,
                         sub_cost_center_id: self.account_payable.sub_cost_center_id,
                   sub_cost_center_three_id: self.account_payable.sub_cost_center_three_id

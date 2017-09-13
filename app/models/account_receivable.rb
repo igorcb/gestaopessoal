@@ -64,7 +64,7 @@ class AccountReceivable < ActiveRecord::Base
                             date_launche: options[:data_pagamento],  
                             price: vr_pago,
                             type_launche: CurrentAccount::TypeLaunche::RECEITAS,
-                            historic: "RECEITA: " + self.historic,
+                            historic: "RECEITA: " + self.documento,
                             cost_center_id: self.cost_center_id,
                             sub_cost_center_id: self.sub_cost_center_id,
                             sub_cost_center_three_id: self.sub_cost_center_three_id

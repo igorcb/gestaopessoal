@@ -7,13 +7,11 @@
         <thead>
           <tr>
             <th>Person</th>
-            <th>Cost center</th>
-            <th>Sub cost center</th>
-            <th>Sub cost center threes</th>
             <th>Data vencimento</th>
             <th>Documento</th>
             <th>Valor</th>
             <th>A Pagar</th>
+            <th>Pago</th>
             <th>Status</th>
             <th colspan="3"></th>
           </tr>
@@ -23,13 +21,11 @@
         <% @account_payables.each do |account_payable| %>
           <tr>
             <td><%= account_payable.person.nome %></td>
-            <td><%= account_payable.cost_center.nome %></td>
-            <td><%= account_payable.sub_cost_center.nome %></td>
-            <td><%= account_payable.sub_cost_center_three.nome %></td>
             <td><%= date_br account_payable.data_vencimento %></td>
             <td><%= account_payable.documento %></td>
             <td><%= number_to_currency(account_payable.valor, unit: "R$ ", separator: ",", delimiter: ".") %></td>
             <td><%= number_to_currency(account_payable.saldo, unit: "R$ ", separator: ",", delimiter: ".") %></td>
+            <td><%= number_to_currency(account_payable.valor_total_pago, unit: "R$ ", separator: ",", delimiter: ".") %></td>
             <td><%= account_payable.status_name %></td>
             <td><%= link_to 'Show', account_payable, class: "btn btn-info btn-xs" %></td>
             <td><%= link_to 'Edit', edit_account_payable_path(account_payable), class: "btn btn-primary btn-xs" %></td> 

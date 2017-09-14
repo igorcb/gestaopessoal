@@ -22,7 +22,7 @@
               <tbody>
                 <% @account_payables.each do |account_payable| %>
                   <tr>
-                    <td><%= check_box_tag "os[ids][#{account_payable.id}]", account_payable.id, false, value: number_to_currency(account_payable.valor, unit: "", separator: ",", delimiter: "."), onchange:"checkTotal()", class: "escolha" %></td>    
+                    <td><%= check_box_tag "os[ids][#{account_payable.id}]", account_payable.id, false, value: account_payable.valor, onchange:"checkTotal()", class: "escolha" %></td>    
                     <td><%= link_to truncate(account_payable.person.nome, length: 25), account_payable %></td>
                     <td><%= link_to date_br(account_payable.data_vencimento ), account_payable %></td>
                     <td><%= link_to account_payable.documento, account_payable %></td>

@@ -13,6 +13,7 @@
             <th>A Pagar</th>
             <th>Pago</th>
             <th>Status</th>
+            <th>Obs</th>
             <th colspan="3"></th>
           </tr>
         </thead>
@@ -21,15 +22,13 @@
         <% @account_receivables.each do |account_receivable| %>
           <tr>
             <td><%= account_receivable.person.nome %></td>
-            <td><%= account_receivable.cost_center.nome %></td>
-            <td><%= account_receivable.sub_cost_center.nome %></td>
-            <td><%= account_receivable.sub_cost_center_three.nome %></td>
             <td><%= date_br account_receivable.data_vencimento %></td>
             <td><%= account_receivable.documento %></td>
             <td><%= number_to_currency(account_receivable.valor, unit: "R$ ", separator: ",", delimiter: ".") %></td>
             <td><%= number_to_currency(account_receivable.saldo, unit: "R$ ", separator: ",", delimiter: ".") %></td>
             <td><%= number_to_currency(account_receivable.valor_total_pago, unit: "R$ ", separator: ",", delimiter: ".") %></td>
             <td><%= account_receivable.status_name %></td>
+            <td><%= link_to truncate(account_receivable.obs, length: 50), account_receivable, title: account_receivable.obs  %></td>
             <td><%= link_to 'Show', account_receivable, class: "btn btn-info btn-xs" %></td>
             <td><%= link_to 'Edit', edit_account_receivable_path(account_receivable), class: "btn btn-primary btn-xs" %></td> 
             <td><%= link_to 'Destroy', account_receivable, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>

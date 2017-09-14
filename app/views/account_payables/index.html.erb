@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">Listagem Contas a Pagar</div>
   <div class="panel-body">
-    <%= link_to 'Novo Pagamento', new_account_payable_path, class: "btn btn-primary btn-lg btn-block" %>
+    <%= link_to 'Nova Despesa', new_account_payable_path, class: "btn btn-primary btn-lg btn-block" %>
     <div class="table-responsive">
       <table class="table table-striped">
         <thead>
@@ -13,6 +13,7 @@
             <th>Data vencimento</th>
             <th>Documento</th>
             <th>Valor</th>
+            <th>Saldo</th>
             <th>Status</th>
             <th colspan="3"></th>
           </tr>
@@ -28,6 +29,7 @@
             <td><%= date_br account_payable.data_vencimento %></td>
             <td><%= account_payable.documento %></td>
             <td><%= number_to_currency(account_payable.valor, unit: "R$ ", separator: ",", delimiter: ".") %></td>
+            <td><%= number_to_currency(account_payable.saldo, unit: "R$ ", separator: ",", delimiter: ".") %></td>
             <td><%= account_payable.status_name %></td>
             <td><%= link_to 'Show', account_payable, class: "btn btn-info btn-xs" %></td>
             <td><%= link_to 'Edit', edit_account_payable_path(account_payable), class: "btn btn-primary btn-xs" %></td> 

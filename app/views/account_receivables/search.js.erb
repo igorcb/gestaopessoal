@@ -1,4 +1,4 @@
- <% if @account_payables.present? %>
+ <% if @account_receivables.present? %>
    $('#results').empty(); 
    $("#results").append("<%= j(render(:partial => "search")) %>");
  <% else %>

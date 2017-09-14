@@ -15,6 +15,7 @@
                   <th>Documento</th>
                   <th>Valor</th>
                   <th>A Pagar</th>
+                  <th>Pago</th>
                   <th>Status</th>
                   <th>Observacao</th>
                 </tr>
@@ -29,6 +30,7 @@
                     <td><%= link_to account_payable.documento, account_payable %></td>
                     <td><%= link_to number_to_currency(account_payable.valor, unit: "R$ ", separator: ",", delimiter: "."), account_payable %></td>
                     <td><%= link_to number_to_currency(account_payable.saldo, unit: "R$ ", separator: ",", delimiter: "."), account_payable %></td>
+                    <td><%= link_to number_to_currency(account_payable.valor_total_pago, unit: "R$ ", separator: ",", delimiter: "."), account_payable %></td>
                     <td><%= account_payable.status_name %></td>
                     <td><%= link_to truncate(account_payable.obs, length: 50), account_payable, title: account_payable.obs  %></td>
                   </tr>

@@ -22,6 +22,10 @@ class AccountReceivable < ActiveRecord::Base
   	end
   end  
 
+  def self.ransackable_attributes(auth_object = nil)
+    ['data_vencimento', 'documento', 'person_id', 'status' ]
+  end  
+
   def saldo
     self.valor - self.lower_account_receivables.sum(:valor_pago)
   end
@@ -35,6 +39,23 @@ class AccountReceivable < ActiveRecord::Base
                   TypeStatus::PAGOPARCIAL : self.status = TypeStatus::ABERTO
     self.save!
   end
+
+  def self.payament_all(ids, value, account_bank)
+    data = Time.now.strftime('%Y-%m-%d')
+    valor_total = 0
+    hash_ids = []
+    ids.each do |i|
+      hash_ids << i[0].to_i
+      valor_total += i[1].to_f
+      # Efetuar Faturamento
+      id = i[0].to_i
+      valor = i[1].to_f
+      ActiveRecord::Base.transaction do
+        account = AccountReceivable.find(id)
+        account.payament({data_pagamento: data, valor_pago: account.valor.to_f, juros: 0.0, desconto: 0.0, account_bank_id: account_bank})
+      end
+    end
+  end  
 
   def payament(options)
     #options ||= {}

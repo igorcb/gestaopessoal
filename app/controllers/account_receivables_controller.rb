@@ -67,6 +67,30 @@ class AccountReceivablesController < ApplicationController
 
   end  
 
+  def pay_all
+    if !params[:account_bank][:account_bank_id].present?
+      flash[:danger] = "Conta Corrente can't be blank."
+      redirect_to lower_all_receivables_path
+      return 
+    end
+
+    AccountReceivable.payament_all(params[:os][:ids], params[:valor_total], params[:account_bank][:account_bank_id])
+    flash[:success] = "Contas pagas com sucesso."
+    redirect_to lower_all_receivables_path    
+  end
+
+  def lower_all_receivables
+    @q = AccountReceivable.where(status: AccountReceivable::TypeStatus::ABERTO).search(params[:q])
+    @account_receivables = @q.result
+#    @employees = Employee.order('nome')
+  end
+
+  def search
+    @q = AccountReceivable.order('data_vencimento desc').search(params[:q])
+    @account_receivables = @q.result
+  end
+
+
   private
     def set_account_receivable
       @account_receivable = AccountReceivable.find(params[:id])

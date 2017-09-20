@@ -19,9 +19,9 @@
   <div class="form-group">
     <%= f.label :sub_cost_center_id, "Sub Centro de Custo" %>
     <% if @sub_cost_center_three.cost_center_id.present? %>
-      <%= f.collection_select :sub_cost_center_id, sub_center(@sub_cost_center_three.cost_center_id), :id, :descricao, {prompt: "SELECIONE SUB CENTRO DE CUSTO"}, {class: "form-control"} %>
+      <%= f.collection_select :sub_cost_center_id, sub_center(@sub_cost_center_three.cost_center_id), :id, :nome, {prompt: "SELECIONE SUB CENTRO DE CUSTO"}, {class: "form-control"} %>
     <% else %>
-      <%= f.collection_select :sub_cost_center_id, [], :id, :descricao, {prompt: "SELECT PRIMEIRO CENTRO DE CUSTO"}, {class: "form-control"}  %>
+      <%= f.collection_select :sub_cost_center_id, [], :id, :nome, {prompt: "SELECT PRIMEIRO CENTRO DE CUSTO"}, {class: "form-control"}  %>
     <% end %>
   </div>
 

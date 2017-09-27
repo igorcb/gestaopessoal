@@ -31,9 +31,14 @@ Rails.application.routes.draw do
       post 'pay_all'
     end
   end
+  
+  resources :current_accounts do
+    collection do
+      get 'search'
+    end
+  end
 
   resources :people
-  resources :current_accounts
   resources :sub_cost_center_threes
   resources :sub_cost_centers
   resources :cost_centers

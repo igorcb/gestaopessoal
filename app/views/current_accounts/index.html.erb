@@ -1,37 +1,42 @@
-<p id="notice"><%= notice %></p>
+
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingEleven">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseEleven" aria-expanded="false" aria-controls="collapseEleven">
+          Pesquisar
+        </a>
+      </h4>
+    </div>
+    <div id="collapseEleven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingEleven">
+      <div class="panel-body">
+
+      <%= render "form_search" %>
+
+    </div>
+  </div>
+
+</div>
+
 
 <div class="panel panel-default">
-  <div class="panel-heading">Listagem Conta Corrente</div>
+  <div class="panel-heading">Listagem do Caixa</div>
   <div class="panel-body">
-    <%= link_to 'Novo Conta Corrente', new_current_account_path, class: "btn btn-primary btn-lg btn-block" %>
-    <div class="table-responsive">
-      <table class="table table-striped">
-        <thead>
-          <th>Pessoa</th>
-          <th>Conta</th>
-          <th>Data</th>
-          <th>Cred/Debit</th>
-          <th>Valor </th>
-          <th>Historico</th>
-          <th colspan="2"></th>
-        </tr>
-      </thead>
 
-      <tbody>
-        <% @current_accounts.each do |current_account| %>
-          <tr>
-            <td><%= current_account.person.nome %></td>
-            <td><%= current_account.account_bank.nome %></td>
-            <td><%= date_br(current_account.date_launche) %></td>
-            <td><%= current_account.name_type_launche %></td>
-            <td><%= number_to_currency(current_account.price, unit: "R$ ", separator: ",", delimiter: ".") %></td>
-            <td><%= truncate(current_account.historic, lenght: 20) %></td>
-            <td><%= link_to 'Exibir', current_account, class: "btn btn-info btn-xs" %></td>
-            <td><%= link_to 'Editar', edit_current_account_path(current_account), class: "btn btn-primary btn-xs" %></td>
-          </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <%= link_to 'Nova Conta', new_current_account_path, class: "btn btn-primary btn-sm btn-block" %>
+    <div class="table-responsive">
+      
+        <div id="result_cash">
+          <%= render 'list' %>
+        </div>
+
     </div>    
   </div>
 </div>
+
+<script type="text/javascript">
+  // $(document).ready(function() {
+  //   $('.has_tooltip').tooltip();
+  // });
+</script>

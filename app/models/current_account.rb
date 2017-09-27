@@ -19,4 +19,9 @@ class CurrentAccount < ActiveRecord::Base
 	  	when  1 then 'RECEITAS'
   	end
   end
+
+  def self.ransackable_attributes(auth_object = nil)
+    ['date_launche', 'documento', 'person_id', 'account_bank_id', 'cost_center_id', 'sub_cost_center_id', 'sub_cost_center_three_id', 'historic' ]
+  end    
+
 end

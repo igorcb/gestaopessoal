@@ -1,0 +1,10 @@
+<tr>
+	<td><%= current_account.person.nome %></td>
+	<td><%= current_account.account_bank.nome %></td>
+	<td><%= date_br(current_account.date_launche) %></td>
+	<td><%= current_account.name_type_launche %></td>
+	<td><%= number_to_currency(current_account.price, unit: "R$ ", separator: ",", delimiter: ".") %></td>
+	<td><%= truncate(current_account.historic, lenght: 20) %></td>
+	<td><%= link_to 'Exibir', current_account, class: "btn btn-info btn-xs" %></td>
+	<td><%= link_to 'Editar', edit_current_account_path(current_account), class: "btn btn-primary btn-xs" %></td>
+</tr>

@@ -1,0 +1,14 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <%= render 'header' %>
+    </thead>
+
+    <tbody>
+      <% @current_accounts.each do |current_account| %>
+        <%= render current_account %>
+      <% end %>
+      
+    </tbody>
+  </table>
+</div>    

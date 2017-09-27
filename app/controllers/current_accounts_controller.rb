@@ -5,6 +5,7 @@ class CurrentAccountsController < ApplicationController
   # GET /current_accounts
   # GET /current_accounts.json
   def index
+    @q = CurrentAccount.where(id: -1).search(params[:q])
     @current_accounts = CurrentAccount.all
   end
 
@@ -60,6 +61,11 @@ class CurrentAccountsController < ApplicationController
       format.html { redirect_to current_accounts_url, notice: 'Current account was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    @q = CurrentAccount.search(params[:q])
+    @current_accounts = @q.result
   end
 
   private

@@ -1,0 +1,44 @@
+<%= search_form_for @q, :remote=>"true", url: search_current_accounts_path, :method => :get do |f| %>
+<fieldset>
+  
+  <div class="form-group">
+    <%= f.label :person_id_eq, "Pessoa" %>
+    <%= f.collection_select :person_id_eq, Person.order('nome'), :id, :nome, {include_blank: true}, {class: "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :account_bank_id_eq, "Caixa" %>
+    <%= f.collection_select :account_bank_id_eq, AccountBank.order('nome'), :id, :nome, {include_blank: true}, {class: "form-control"} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :date_launche_gteq, "Periodo" %>
+    <%= f.search_field :date_launche_gteq, class: "form-control datepicker" %>  
+  </div>
+
+  <div class="form-group">
+    <%= f.label :date_launche_lteq, "Até" %>
+    <%= f.search_field :date_launche_lteq, class: "form-control datepicker" %>  
+  </div>
+  
+  <div class="form-group">
+    <%= f.label :historic_eq, "Historico" %>
+    <%= f.search_field :historic_eq, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Search" %>
+  </div>
+
+
+</fieldset>
+
+<% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $('.datepicker').datepicker({
+      language: 'pt-BR'
+    });
+  });
+</script>

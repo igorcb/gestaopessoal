@@ -42,6 +42,7 @@ class PeopleController < ApplicationController
     end
 
     def person_params
-      params.require(:person).permit(:tipo_pessoa, :cpf_cnpj, :nome, :endereco)
+      params.require(:person).permit(:tipo_pessoa, :cpf_cnpj, :nome, :endereco, :numero, :complemento, :bairro,
+        :cidade, :estado, :cep)
     end
 end

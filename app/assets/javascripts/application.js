@@ -14,6 +14,7 @@
 //  require jquery.turbolinks
 //= require jquery-ui
 //= require jquery_ujs
+//= require jquery.nested-fields
 //= require bootstrap-datepicker/core
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.js
 //= require bootstrap/collapse

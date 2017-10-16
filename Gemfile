@@ -19,6 +19,7 @@ gem 'bootstrap-addons-rails'
 gem 'will_paginate-bootstrap'
 gem 'bootstrap-datepicker-rails'
 gem 'ransack'
+gem 'awesome_nested_fields', '0.6.4'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

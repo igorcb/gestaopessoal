@@ -50,6 +50,9 @@
 
 </div>
 
+<%= render 'shared/show_contacts', object: @person %>
+
+
 <div class="form-group">
   <%= link_to 'Editar', edit_person_path(@person), class: "btn btn-primary"  %> 
   <%= link_to 'Voltar', people_path, class: "btn btn-default" %>

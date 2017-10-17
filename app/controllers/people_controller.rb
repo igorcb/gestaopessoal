@@ -46,8 +46,9 @@ class PeopleController < ApplicationController
         :cidade, :estado, :cep,
         assets_attributes: [:asset, :id, :_destroy],
         emails_attributes: [:sector_id, :email, :contato, :observation, :id, :_destroy],
-        contacts_attributes: [:contact, :tipo, :nome, :fone, :complemento, :id, :_destroy]
-
-)
+        contacts_attributes: [:contact, :tipo, :nome, :fone, :complemento, :id, :_destroy],
+        account_banks_attributes: [:bank_id, :agencia, :conta, :tipo,:favorecido, :cpf_cnpj, :observation, :id, :_destroy]
+      
+        )
     end
 end

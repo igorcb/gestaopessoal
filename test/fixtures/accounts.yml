@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  bank_id: 
+  agencia: MyString
+  conta: MyString
+  tipo: MyString
+  favorecido: MyString
+  cpf_cnpj: MyString
+  observation: MyString
+
+two:
+  bank_id: 
+  agencia: MyString
+  conta: MyString
+  tipo: MyString
+  favorecido: MyString
+  cpf_cnpj: MyString
+  observation: MyString

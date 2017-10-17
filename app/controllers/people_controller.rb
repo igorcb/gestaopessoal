@@ -44,6 +44,7 @@ class PeopleController < ApplicationController
     def person_params
       params.require(:person).permit(:tipo_pessoa, :cpf_cnpj, :nome, :endereco, :numero, :complemento, :bairro,
         :cidade, :estado, :cep,
+        assets_attributes: [:asset, :id, :_destroy],
         emails_attributes: [:sector_id, :email, :contato, :observation, :id, :_destroy],
         contacts_attributes: [:contact, :tipo, :nome, :fone, :complemento, :id, :_destroy]
 

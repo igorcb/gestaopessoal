@@ -3,7 +3,7 @@ class Contact < ActiveRecord::Base
   validates :nome, presence: true,  length: { maximum: 30 }
   #validates :fone, presence: true
 
-  belongs_to :person, class_name: "People", foreign_key: "contact_id", polymorphic: true, dependent: :destroy	
+  belongs_to :person, class_name: "Person", foreign_key: "contact_id", polymorphic: true, dependent: :destroy	
 
 	module TipoContato
 		FIXO     = 0

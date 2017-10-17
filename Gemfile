@@ -21,6 +21,7 @@ gem 'bootstrap-datepicker-rails'
 gem 'ransack'
 gem 'awesome_nested_fields', '0.6.4'
 gem 'migration_data'
+gem "paperclip"
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

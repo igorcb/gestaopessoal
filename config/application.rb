@@ -19,5 +19,14 @@ module Gestaopessoal
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
+    config.i18n.available_locales = [:"pt-BR", :en]
+    config.i18n.default_locale = "pt-BR"
+    #config.i18n.enforce_available_locales = true
+    config.time_zone = 'Brasilia'
+    #config.assets.prefix = '/assets'
+    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    Paperclip.options[:command_path] = "/usr/bin/"
+    #config.autoload_paths += %W(#{config.root}/lib)
+    config.watchable_dirs['lib'] = [:rb]
   end
 end

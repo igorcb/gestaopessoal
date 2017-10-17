@@ -1,56 +1,89 @@
-<div class="panel panel-default">
-  <div class="panel-heading">Dados do Centro de Custo</div>
-  <div class="panel-body">
-		<p>
-		  <strong>Tipo pessoa:</strong>
-		  <%= @person.name_type_person %>
-		</p>
+<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingOne">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+          Dados da Pessoa
+        </a>
+      </h4>
+    </div>
+    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+      <div class="panel-body">
+        <div class="panel panel-default">
 
-		<p>
-		  <strong>CPF/CNPJ:</strong>
-		  <%= @person.cpf_cnpj %>
-		</p>
+          <div class="panel panel-default">
 
-		<p>
-		  <strong>Nome:</strong>
-		  <%= @person.nome %>
-		</p>
-
-		<p>
-		  <strong>Endereco:</strong>
-		  <%= @person.endereco %>
-		</p>
-
-		<p>
-		  <strong>Numero:</strong>
-		  <%= @person.numero %>
-		</p>
-
-		<p>
-		  <strong>Complemento:</strong>
-		  <%= @person.complemento %>
-		</p>
-
-		<p>
-		  <strong>Bairro:</strong>
-		  <%= @person.bairro %>
-		</p>
-
-		<p>
-		  <strong>Cidade:</strong>
-		  <%= @person.cidade %> / <%= @person.estado %>
-		</p>
-  
-		<p>
-		  <strong>CEP:</strong>
-		  <%= @person.cep %>
-		</p>
-
+            <div class="panel-body"> 
+              <%= render 'data_person', object: @person %> 	
+            </div>
+          </div>
+        
+        </div>
+      </div>
+    </div>
   </div>
 
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTwo">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Contatos
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+      <div class="panel-body">
+
+        <div class="panel-body">
+          <div class="panel panel-default">
+
+            <div class="panel panel-default">
+
+              <div class="panel-body"> 
+                <%= render 'shared/show_contacts', object: @person %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingTree">
+      <h4 class="panel-title">
+        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTree" aria-expanded="false" aria-controls="collapseTree">
+          E-mail
+        </a>
+      </h4>
+    </div>
+    <div id="collapseTree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTree">
+      <div class="panel-body">
+
+        <div class="panel-body">
+          <div class="panel panel-default">
+
+            <div class="panel panel-default">
+
+              <div class="panel-body"> 
+                <%= render 'shared/show_emails', object: @person %>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+<!-- div fim -->
 </div>
 
-<%= render 'shared/show_contacts', object: @person %>
+
 
 
 <div class="form-group">

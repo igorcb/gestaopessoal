@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  sector_id: 
+  contato: MyString
+  email: MyString
+  observation: MyString
+  email_id: 1
+  email_type: MyString
+
+two:
+  sector_id: 
+  contato: MyString
+  email: MyString
+  observation: MyString
+  email_id: 1
+  email_type: MyString

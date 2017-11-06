@@ -8,9 +8,9 @@ class CurrentAccount < ActiveRecord::Base
   #scope :ordered, -> { order(date_launche: :desc, id: :desc) }
   default_scope { order(date_launche: :desc, id: :desc) } 
 
-  COSTCENTER = 1 # PESSOAL
-  SUBCOSTCENTER = 1 # SISTEMA
-  SUBCOSTCENTERTHREE = 1 # FINANCEIRO
+  COSTCENTER = 8 # PESSOAL
+  SUBCOSTCENTER = 24 # SISTEMA
+  SUBCOSTCENTERTHREE = 63 # FINANCEIRO
 
   module TypeLaunche
   	DESPESAS = -1

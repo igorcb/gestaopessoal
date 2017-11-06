@@ -8,6 +8,10 @@ class CurrentAccount < ActiveRecord::Base
   #scope :ordered, -> { order(date_launche: :desc, id: :desc) }
   default_scope { order(date_launche: :desc, id: :desc) } 
 
+  COSTCENTER = 1 # PESSOAL
+  SUBCOSTCENTER = 1 # SISTEMA
+  SUBCOSTCENTERTHREE = 1 # FINANCEIRO
+
   module TypeLaunche
   	DESPESAS = -1
   	RECEITAS = 1
@@ -23,5 +27,4 @@ class CurrentAccount < ActiveRecord::Base
   def self.ransackable_attributes(auth_object = nil)
     ['date_launche', 'documento', 'person_id', 'account_bank_id', 'cost_center_id', 'sub_cost_center_id', 'sub_cost_center_three_id', 'historic' ]
   end    
-
 end

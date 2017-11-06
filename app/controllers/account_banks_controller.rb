@@ -62,6 +62,21 @@ class AccountBanksController < ApplicationController
     end
   end
 
+  def transfer
+    @account_bank = AccountBank.find(params[:account_bank_id])    
+    @accounts = AccountBank.where.not(id: params[:account_bank_id]).order(:nome)
+  end
+
+  def tranfer_value
+    @account_bank = AccountBank.find(params[:account_bank_id])
+    @account_bank_target = AccountBank.find(params[:account_bank_target_id])
+    @account_bank.tranfer(params)
+    respond_to do |format|
+      format.html { redirect_to account_banks_url, notice: 'Account bank TRANSFER was successfully.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_account_bank

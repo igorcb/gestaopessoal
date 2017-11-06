@@ -42,7 +42,10 @@ Rails.application.routes.draw do
   resources :sub_cost_center_threes
   resources :sub_cost_centers
   resources :cost_centers
-  resources :account_banks
+  resources :account_banks do
+    get :transfer
+    post :tranfer_value
+  end
 
   devise_for :users
 

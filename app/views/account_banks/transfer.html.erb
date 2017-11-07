@@ -17,6 +17,11 @@
   </div>
 
   <div class="form-group">
+    <%= label_tag :person_id, "Pessoa" %><br>
+    <%= select_tag :person_id, options_from_collection_for_select(@persons, :id, :nome), {class: "form-control"}  %>
+  </div>
+
+  <div class="form-group">
   <%= label_tag :date_launche, "Data" %>
 	<%= text_field_tag :date_launche, date_br(DateTime.current), class: "form-control datepicker" %>
   </div>

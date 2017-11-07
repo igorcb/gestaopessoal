@@ -1,5 +1,5 @@
 <tr>
-	<td><%= current_account.person.nome %></td>
+	<td><%= current_account.person.nome if current_account.person.present? %></td>
 	<td><%= current_account.account_bank.nome %></td>
 	<td><%= date_br(current_account.date_launche) %></td>
 	<td><%= current_account.name_type_launche %></td>

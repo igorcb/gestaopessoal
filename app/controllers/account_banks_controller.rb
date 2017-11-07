@@ -65,6 +65,7 @@ class AccountBanksController < ApplicationController
   def transfer
     @account_bank = AccountBank.find(params[:account_bank_id])    
     @accounts = AccountBank.where.not(id: params[:account_bank_id]).order(:nome)
+    @persons = Person.order(:nome)
   end
 
   def tranfer_value

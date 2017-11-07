@@ -9,6 +9,7 @@ class AccountBank < ActiveRecord::Base
   		#Debitar da Origem
   		CurrentAccount.create!(
 				 account_bank_id: accounts[:account_bank_id],
+				 person_id: accounts[:person_id],
 				 cost_center_id: CurrentAccount::COSTCENTER, 
 				 sub_cost_center_id: CurrentAccount::SUBCOSTCENTER, 
 				 sub_cost_center_three_id: CurrentAccount::SUBCOSTCENTERTHREE, 
@@ -17,9 +18,10 @@ class AccountBank < ActiveRecord::Base
 				 price: accounts[:price], 
 				 historic: accounts[:historic]
 				 )
-  		# #Creditar da Origem
+  		#Creditar da Origem
   		CurrentAccount.create!(
 				 account_bank_id: accounts[:account_bank_target_id],
+				 person_id: accounts[:person_id],
 				 cost_center_id: CurrentAccount::COSTCENTER, 
 				 sub_cost_center_id: CurrentAccount::SUBCOSTCENTER, 
 				 sub_cost_center_three_id: CurrentAccount::SUBCOSTCENTERTHREE, 

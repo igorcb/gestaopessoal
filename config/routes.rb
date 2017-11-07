@@ -17,6 +17,8 @@ Rails.application.routes.draw do
       get 'search'
       get 'post'
       post 'pay_all'
+      get :part
+      post :part_payment
     end
   end
 

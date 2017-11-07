@@ -93,6 +93,65 @@ class AccountPayable < ActiveRecord::Base
     end
   end
 
+  def self.generate_parts(accounts = {})
+    dia_vencimento = accounts[:dia_do_vencimento].present? ? accounts[:dia_do_vencimento].to_i : 0
+    intervalo_parcelas = accounts[:intervalo_parcelas].present? ? accounts[:intervalo_parcelas].to_i : 0
+    valor = accounts[:valor].to_f
+    qtde_parcelas = accounts[:qtde_parcelas].to_i
+    contador = 0
+    vencimento = Date.parse(accounts[:data_vencimento])
+    ActiveRecord::Base.transaction do
+      valor_parcela = valor / qtde_parcelas
+      novo_valor_parcela = ActiveSupport::NumberHelper.number_to_currency(valor_parcela, unit: '', delimiter: '', separator: '.', precision: 2)
+      puts ">>>>>>>>>>>>>>>> Novo Valor: #{novo_valor_parcela}"
+      AccountPayable.create!(person_id: accounts[:person_id], 
+                            data_vencimento: accounts[:data_vencimento],  
+                            valor: novo_valor_parcela,
+                            documento: accounts[:documento] + " Parc: #{1}/#{qtde_parcelas}",
+                            cost_center_id: accounts[:cost_center_id],
+                            sub_cost_center_id: accounts[:sub_cost_center_id],
+                            sub_cost_center_three_id: accounts[:sub_cost_center_three_id],
+                            obs: accounts[:obs],
+                            status: TypeStatus::ABERTO
+                            )
+
+      qtde_parcelas = qtde_parcelas - 1
+      contador = contador + 1
+
+      qtde_parcelas.times do |x|
+        contador = contador + 1
+        if dia_vencimento > 0
+          vencimento = vencimento + 1.month
+          month = vencimento.month
+          year  = vencimento.year
+          day   = dia_vencimento
+          if month == 2 && dia_vencimento > 28 #FEVEREIRO get last day month
+            day = vencimento.end_of_month.day
+          else
+            day = dia_vencimento
+          end
+
+          novo_vencimento = Date.new(year, month, day)
+          
+        else
+          novo_vencimento = vencimento + intervalo_parcelas.days
+          puts ">>>>>>>>>>>>>>>> Venc: #{novo_vencimento}     IntDias: #{intervalo_parcelas}"
+          vencimento = novo_vencimento
+        end
+        AccountPayable.create!(person_id: accounts[:person_id], 
+                              data_vencimento: novo_vencimento,  
+                              valor: valor_parcela, 
+                              documento: accounts[:documento] + " Parc: #{contador}/#{accounts[:qtde_parcelas]}",
+                              cost_center_id: accounts[:cost_center_id],
+                              sub_cost_center_id: accounts[:sub_cost_center_id],
+                              sub_cost_center_three_id: accounts[:sub_cost_center_three_id],
+                              obs: accounts[:obs],
+                              status: TypeStatus::ABERTO
+                              )
+      end
+    end
+  end
+
 
 end
 

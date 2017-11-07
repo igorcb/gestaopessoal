@@ -85,11 +85,22 @@ class AccountPayablesController < ApplicationController
 #    @employees = Employee.order('nome')
   end
 
+  def part
+    @people = Person.order(:nome)
+    @cost_centers = CostCenter.order(:nome)
+    @sub_cost_centers = SubCostCenter.where(id: -1)
+    @sub_cost_center_threes = SubCostCenterThree.where(id: -1)
+  end
+
+  def part_payment
+    AccountPayable.generate_parts(params) 
+    redirect_to account_payables_path
+  end
+
   def search
     @q = AccountPayable.order('data_vencimento desc').search(params[:q])
     @account_payables = @q.result
   end
-
 
   private
     def set_account_payable

@@ -7,7 +7,8 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th>Person</th>
+            <th>Pessoa</th>
+            <th>Data Compra</th>
             <th>Data vencimento</th>
             <th>Documento</th>
             <th>Valor</th>
@@ -23,6 +24,7 @@
         <% @account_payables.each do |account_payable| %>
           <tr>
             <td><%= account_payable.person.nome %></td>
+            <td><%= date_br account_payable.date_purchase %></td>
             <td><%= date_br account_payable.data_vencimento %></td>
             <td><%= account_payable.documento %></td>
             <td><%= number_to_currency(account_payable.valor, unit: "R$ ", separator: ",", delimiter: ".") %></td>

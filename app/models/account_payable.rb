@@ -105,6 +105,7 @@ class AccountPayable < ActiveRecord::Base
       novo_valor_parcela = ActiveSupport::NumberHelper.number_to_currency(valor_parcela, unit: '', delimiter: '', separator: '.', precision: 2)
       puts ">>>>>>>>>>>>>>>> Novo Valor: #{novo_valor_parcela}"
       AccountPayable.create!(person_id: accounts[:person_id], 
+                            date_purchase: accounts[:data_compra],  
                             data_vencimento: accounts[:data_vencimento],  
                             valor: novo_valor_parcela,
                             documento: accounts[:documento] + " Parc: #{1}/#{qtde_parcelas}",
@@ -135,10 +136,11 @@ class AccountPayable < ActiveRecord::Base
           
         else
           novo_vencimento = vencimento + intervalo_parcelas.days
-          puts ">>>>>>>>>>>>>>>> Venc: #{novo_vencimento}     IntDias: #{intervalo_parcelas}"
+          #puts ">>>>>>>>>>>>>>>> Venc: #{novo_vencimento}     IntDias: #{intervalo_parcelas}"
           vencimento = novo_vencimento
         end
         AccountPayable.create!(person_id: accounts[:person_id], 
+                              date_purchase: accounts[:data_compra],  
                               data_vencimento: novo_vencimento,  
                               valor: valor_parcela, 
                               documento: accounts[:documento] + " Parc: #{contador}/#{accounts[:qtde_parcelas]}",

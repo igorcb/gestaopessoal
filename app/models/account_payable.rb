@@ -1,4 +1,13 @@
 class AccountPayable < ActiveRecord::Base
+  validates :person_id, presence: true
+  validates :date_purchase, presence: true
+  validates :data_vencimento, presence: true
+  validates :valor, presence: true
+  validates :cost_center_id , presence: true
+  validates :sub_cost_center_id, presence: true
+  validates :sub_cost_center_three_id, presence: true
+  #validates :status
+
   belongs_to :person
   belongs_to :cost_center
   belongs_to :sub_cost_center

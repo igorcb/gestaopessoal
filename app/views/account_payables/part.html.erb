@@ -3,32 +3,32 @@
 
   <div class="form-group">
     <%= label_tag :person_id, "Pessoa" %><br>
-    <%= select_tag :person_id, options_from_collection_for_select(@people, :id, :nome), {include_blank: true, class: "form-control"} %>
+    <%= select_tag :person_id, options_from_collection_for_select(@people, :id, :nome), {include_blank: true, class: "form-control", required: true} %>
   </div>
 
   <div class="form-group">
     <%= label_tag :cost_center_id, "Centro de Custo" %>
-    <%= select_tag :cost_center_id, options_from_collection_for_select(@cost_centers, :id, :nome), {include_blank: true, class: "form-control"} %>
+    <%= select_tag :cost_center_id, options_from_collection_for_select(@cost_centers, :id, :nome), {include_blank: true, class: "form-control", required: true} %>
   </div>
 
   <div class="form-group">
     <%= label_tag :sub_cost_center_id, "Sub Centro de Custo" %><br>
-    <%= select_tag :sub_cost_center_id, options_from_collection_for_select(@sub_cost_centers, :id, :nome), {include_blank: true, class: "form-control"} %>
+    <%= select_tag :sub_cost_center_id, options_from_collection_for_select(@sub_cost_centers, :id, :nome), {include_blank: true, class: "form-control", required: true} %>
   </div>
 
   <div class="form-group">
     <%= label_tag :sub_cost_center_three_id, "Terceiro Sub Centro de Custo" %><br>
-    <%= select_tag :sub_cost_center_three_id, options_from_collection_for_select(@sub_cost_center_threes, :id, :nome), {include_blank: true, class: "form-control"} %>
+    <%= select_tag :sub_cost_center_three_id, options_from_collection_for_select(@sub_cost_center_threes, :id, :nome), {include_blank: true, class: "form-control", required: true} %>
   </div>
 
   <div class="form-group">
     <%= label_tag :data_compra, "Data Compra" %><br>
-    <%= text_field_tag :data_compra, nil, value: date_br(DateTime.current), class: "form-control datepicker" %>
+    <%= text_field_tag :data_compra, nil, value: date_br(DateTime.current), class: "form-control datepicker", required: true %>
   </div>
 
   <div class="form-group">
-    <%= label_tag :data_vencimento, "Data Venc." %><br>
-    <%= text_field_tag :data_vencimento, nil, value: date_br(DateTime.current), class: "form-control datepicker" %>
+    <%= label_tag :data_vencimento, "Data Venc:" %><br>
+    <%= text_field_tag :data_vencimento, nil, value: date_br(DateTime.current), class: "form-control datepicker", required: true %>
   </div>
 
   <div class="form-group">
@@ -38,22 +38,22 @@
 
   <div class="form-group">
     <%= label_tag :valor, "Valor" %><br>
-    <%= text_field_tag :valor, nil, class: "form-control" %>
+    <%= text_field_tag :valor, nil, class: "form-control", required: true %>
   </div>
 
   <div class="form-group">
     <%= label_tag :qtde_parcelas %><br>
-    <%= text_field_tag :qtde_parcelas, "1", class: "form-control" %>
+    <%= text_field_tag :qtde_parcelas, "1", class: "form-control", required: true %>
   </div>
 
   <div class="form-group">
     <%= label_tag :intervalo_parcelas %><br>
-    <%= text_field_tag :intervalo_parcelas, "0", class: "form-control" %>
+    <%= text_field_tag :intervalo_parcelas, "0", class: "form-control", required: true %>
   </div>
 
   <div class="form-group">
     <%= label_tag :dia_do_vencimento %><br>
-    <%= text_field_tag :dia_do_vencimento, "0", class: "form-control" %>
+    <%= text_field_tag :dia_do_vencimento, "0", class: "form-control", required: true %>
   </div>
 
   <div class="form-group">

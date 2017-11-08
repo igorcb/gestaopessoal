@@ -93,7 +93,7 @@ class AccountPayablesController < ApplicationController
   end
 
   def part_payment
-    AccountPayable.generate_parts(params) 
+    AccountPayable.generate_parts(params)
     redirect_to account_payables_path
   end
 

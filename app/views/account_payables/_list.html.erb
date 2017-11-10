@@ -1,0 +1,22 @@
+<div class="table-responsive">
+  <table class="table table-striped">
+    <thead>
+      <%= render 'header' %>
+    </thead>
+
+    <tbody>
+      <% @account_payables.each do |account_payable| %>
+        <%= render account_payable %>
+      <% end %>
+      <tr>
+        <td colspan="">Totais:</td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td><%= AccountPayable.total(@account_payables) %></td>
+        <td><%= AccountPayable.saldo_total(@account_payables) %></td>
+        <td><%= AccountPayable.total_pago(@account_payables) %></td>
+        <td colspan="5"></td>
+    </tbody>
+  </table>
+</div>    

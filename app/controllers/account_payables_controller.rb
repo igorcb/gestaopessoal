@@ -4,8 +4,9 @@ class AccountPayablesController < ApplicationController
   respond_to :html
 
   def index
+    @q = AccountPayable.where(status: -1).search(params[:q])
     @account_payables = AccountPayable.all
-    respond_with(@account_payables)
+    #respond_with(@account_payables)
   end
 
   def show

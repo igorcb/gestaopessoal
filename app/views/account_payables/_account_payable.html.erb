@@ -1,0 +1,14 @@
+<tr>
+  <td><%= account_payable.person.nome %></td>
+  <td><%= date_br account_payable.date_purchase %></td>
+  <td><%= date_br account_payable.data_vencimento %></td>
+  <td><%= account_payable.documento %></td>
+  <td><%= number_to_currency(account_payable.valor, unit: "R$ ", separator: ",", delimiter: ".") %></td>
+  <td><%= number_to_currency(account_payable.saldo, unit: "R$ ", separator: ",", delimiter: ".") %></td>
+  <td><%= number_to_currency(account_payable.valor_total_pago, unit: "R$ ", separator: ",", delimiter: ".") %></td>
+  <td><%= account_payable.status_name %></td>
+  <td><%= link_to truncate(account_payable.obs, length: 50), account_payable, title: account_payable.obs  %></td>
+  <td><%= link_to 'Show', account_payable, class: "btn btn-info btn-xs" %></td>
+  <td><%= link_to 'Edit', edit_account_payable_path(account_payable), class: "btn btn-primary btn-xs" %></td> 
+  <td><%= link_to 'Destroy', account_payable, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-xs" %></td>
+</tr>

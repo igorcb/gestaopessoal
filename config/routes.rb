@@ -14,7 +14,7 @@ Rails.application.routes.draw do
       post 'pay'
     end
     collection do
-      get 'search'
+      get :search
       get 'post'
       post 'pay_all'
       get :part

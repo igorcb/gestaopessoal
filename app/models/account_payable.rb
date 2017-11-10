@@ -49,6 +49,24 @@ class AccountPayable < ActiveRecord::Base
     self.save!
   end
 
+  def self.saldo_total(accounts)
+    saldo = 0
+    accounts.each {|a| saldo += a.saldo}
+    saldo
+  end
+
+  def self.total(accounts)
+    saldo = 0
+    accounts.each {|a| saldo += a.valor}
+    saldo
+  end
+
+  def self.total_pago(accounts)
+    saldo = 0
+    accounts.each {|a| saldo += a.valor_total_pago}
+    saldo
+  end
+
   def self.payament_all(ids, value, account_bank)
     data = Time.now.strftime('%Y-%m-%d')
     valor_total = 0

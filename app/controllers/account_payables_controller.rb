@@ -100,7 +100,11 @@ class AccountPayablesController < ApplicationController
 
   def search
     @q = AccountPayable.order('data_vencimento desc').search(params[:q])
+    puts ">>>>>>>>>>>>>>>>> Qtde Conta a Pagar: #{@q.result.count}"
     @account_payables = @q.result
+    # respond_with(@account_payables) do |format|
+    #   format.js
+    # end    
   end
 
   private

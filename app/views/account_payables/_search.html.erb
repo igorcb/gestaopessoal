@@ -1,6 +1,7 @@
-<% if @account_payables.present? %>
+<%# if @account_payables.present? %>
 
-  <div id="ordem_service_type_service_id">
+<!--   <div id="ordem_service_type_service_id"> -->
+<div id="result_account_payables"></div>  
     <%= form_tag({:controller => "account_payables", :action => "pay_all"}, :method => "post", :name => "billingForm") do %>
 
       <div class="panel panel-default">
@@ -56,7 +57,7 @@
 
   <% end %>
 
-<% end %>
+<%# end %>
 
 <script type="text/javascript">
   Number.prototype.formatMoney = function(c, d, t){

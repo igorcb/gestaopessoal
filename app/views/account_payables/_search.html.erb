@@ -50,10 +50,10 @@
       </div>
 
     <div class="form-group">
-      <%#= collection_select(:account_bank, :account_bank_id, AccountBank.order(:nome), :id, :nome, {:prompt => 'Selecione uma conta para pagamento'}, class: "form-control")%>
+      <%= collection_select(:account_bank, :account_bank_id, AccountBank.order(:nome), :id, :nome, {:prompt => 'Selecione uma conta para pagamento'}, class: "form-control")%>
     </div>
     
-    <%#= submit_tag("Efetuar Baixa", class: "btn btn-primary") %> 
+    <%= submit_tag("Efetuar Baixa", class: "btn btn-primary") %> 
 
   <% end %>
 

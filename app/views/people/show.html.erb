@@ -121,12 +121,15 @@
         <div class="panel-body">
           <div class="panel panel-default">
 
-            <div class="panel panel-default">
-
-              <div class="panel-body"> 
-                <%= render 'shared/document', object: @person %>
-              </div>
-            </div>
+          <div id="gallery-car" data-toggle="modal-gallery" data-target="#modal-gallery">
+            <% @person.assets.each do |asset| %>
+            <p>
+              <%= link_to image_tag( asset.asset.url(:thumb)), "#" ,  data: {:toggle=>"modal", :target=> "#myModal"} %> 
+            </p>
+            <% end %>
+          </div>    
+              
+          <%= render 'shared/document', object: @person %>
 
           </div>
         </div>

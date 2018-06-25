@@ -19,4 +19,7 @@
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.pt-BR.js
 //= require bootstrap/collapse
 //= require bootstrap/dropdown
+//= require bootstrap/load-image.min
+//= require bootstrap/image-gallery.min
+
 //= require_tree .
